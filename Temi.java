@@ -72,7 +72,7 @@ public class Temi extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrP_Op_Prod = new JScrollPane();
-		scrP_Op_Prod.setBounds(216, 36, 208, 50);
+		scrP_Op_Prod.setBounds(216, 67, 208, 98);
 		contentPane.add(scrP_Op_Prod);
 		
 		JLabel lblNewLabel_3 = new JLabel("Products");
@@ -82,31 +82,31 @@ public class Temi extends JFrame {
 		scrP_Op_Prod.setViewportView(list_1);
 		
 		JButton btnNewButton = new JButton("Look assigned orders");
-		btnNewButton.setBounds(216, 7, 208, 23);
+		btnNewButton.setBounds(216, 33, 208, 23);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(269, 102, 155, 43);
+		textField.setBounds(269, 176, 155, 31);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Address:");
-		lblNewLabel_2.setBounds(216, 116, 60, 14);
+		lblNewLabel_2.setBounds(216, 184, 60, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JScrollPane scrP_Op_Driver = new JScrollPane();
-		scrP_Op_Driver.setBounds(216, 168, 208, 50);
-		contentPane.add(scrP_Op_Driver);
-		
-		JLabel lblNewLabel_4 = new JLabel("Driver ");
-		scrP_Op_Driver.setColumnHeaderView(lblNewLabel_4);
-		
-		JList list_2 = new JList();
-		scrP_Op_Driver.setViewportView(list_2);
-		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setToolTipText("");
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ivan Ivanow", "Pesho", "Gosho", "Nikola"}));
-		comboBox.setBounds(216, 228, 167, 22);
+		comboBox.setBounds(216, 232, 155, 18);
 		contentPane.add(comboBox);
+		
+		JLabel lblNewLabel_4 = new JLabel("Driver:");
+		lblNewLabel_4.setBounds(216, 215, 167, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JButton btnNewButton_1 = new JButton("OK");
+		btnNewButton_1.setToolTipText("");
+		btnNewButton_1.setBounds(381, 225, 48, 32);
+		contentPane.add(btnNewButton_1);
 	}
 }
