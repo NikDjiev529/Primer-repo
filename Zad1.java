@@ -1,19 +1,21 @@
 package maturaZadachi;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Zad1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		LinkedList<Integer> spi = new LinkedList<Integer>();
 		for (int i = 0; i < 20; i++) {
 			spi.add(i-3);
 		}
 		char[] nizche = {'P','r','o','b','a','.','t','x','t'};
-		vurniChislata(nizche);
+		System.out.println(vurniChislata(nizche));
 	}
 
 	@SuppressWarnings("unused")
@@ -75,11 +77,13 @@ public class Zad1 {
 
 		return sp;
 	}
-	private static ArrayList<Integer> vurniChislata(char[] a){
+	private static ArrayList<Integer> vurniChislata(char[] a) throws FileNotFoundException{
 		ArrayList<Integer> spisuk = new ArrayList<Integer>();
 		File fileche = new File(a.toString());
-		
+		Scanner minuvach = new Scanner(fileche);
+		System.out.println(minuvach.nextLine());
+		minuvach.close();
 		return spisuk;
-	}
+	}//greshka ime
 
 }
