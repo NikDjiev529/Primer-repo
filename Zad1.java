@@ -1,4 +1,4 @@
-package maturaZadachi;
+package zadachiMatura;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,16 +10,15 @@ import java.util.Scanner;
 public class Zad1 {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		LinkedList<Integer> spi = new LinkedList<Integer>();
-		for (int i = 0; i < 20; i++) {
-			spi.add(i-3);
-		}
-		char[] nizche = {'P','r','o','b','a','.','t','x','t'};
-		System.out.println(vurniChislata(nizche));
+		Scanner vuvedeni = new Scanner(System.in);
+		String vuvedeno = vuvedeni.nextLine();
+		char []niz = vuvedeno.toCharArray();
+		
+		vuvedeni.close();
 	}
 
 	@SuppressWarnings("unused")
-	private static LinkedList<Integer> metodTrii(LinkedList<Integer> sp, int k) {
+	private static LinkedList<Integer> metodTrii(LinkedList<Integer> sp, int k) {//podtochka a)
 		Iterator<Integer> naSp = sp.iterator();
 		while (naSp.hasNext()) {
 				if (sborZifri(naSp.next()) % k == 0) {
@@ -44,7 +43,7 @@ public class Zad1 {
 	}
 
 	@SuppressWarnings("unused")
-	private static LinkedList<Integer> prenaredi(LinkedList<Integer> sp) {
+	private static LinkedList<Integer> prenaredi(LinkedList<Integer> sp) {//podtochka b)
 		int[] mas_sbor_Zifri = new int[sp.size()];
 		for (int i = 0; i < sp.size(); i++) {
 			mas_sbor_Zifri[i] = sborZifri(sp.get(i));
@@ -77,13 +76,40 @@ public class Zad1 {
 
 		return sp;
 	}
-	private static ArrayList<Integer> vurniChislata(char[] a) throws FileNotFoundException{
+	private static ArrayList<Integer> vurniChislata(char[] a) throws FileNotFoundException{//podtochka v)
 		ArrayList<Integer> spisuk = new ArrayList<Integer>();
-		File fileche = new File(a.toString());
-		Scanner minuvach = new Scanner(fileche);
-		System.out.println(minuvach.nextLine());
+		String vuzmFail = "";
+		for(int i=0; i<a.length; i++) {
+			vuzmFail = vuzmFail + a[i];
+		}
+		File fileche = new File(vuzmFail);
+		Scanner minuvach = null;
+		try {
+		minuvach = new Scanner(fileche);
+		}catch(FileNotFoundException e) {
+			throw new FileNotFoundException("File not found");
+		}
+		while(minuvach.hasNext()) {
+			String dumaMai = minuvach.next();
+			if(isNumericAndWhole(dumaMai) == true) {
+				int chislo = Integer.parseInt(dumaMai);
+				spisuk.add(chislo);
+			}
+
+		}
 		minuvach.close();
+		
 		return spisuk;
-	}//greshka ime
+	}
+	
+	private static boolean isNumericAndWhole(String duma) {
+		try {
+			@SuppressWarnings("unused")
+			int d = Integer.parseInt(duma);
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
 
 }
