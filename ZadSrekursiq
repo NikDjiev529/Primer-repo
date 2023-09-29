@@ -1,0 +1,54 @@
+package rekursiq;
+import java.io.*;
+import java.util.Scanner;
+public class MasivNaobratno {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		File fileche = new File("data.txt");
+		Scanner premini = new Scanner(fileche);
+		int brChisla=0;
+		while(premini.hasNext()) {
+			brChisla++;
+			premini.nextLine();
+		}
+		premini.close();
+		Scanner premini2 = new Scanner(fileche);
+		int mas[] = new int[brChisla];
+		for(int i=0; i<brChisla; i++) {
+			mas[i] = premini.nextInt();
+		}
+		int brChisla2 = 0;
+		for(int i=0; i<brChisla; i++) {
+			if(mas[i] % 2 ==0) {
+				brChisla2++;
+			}
+		}
+		
+		int mas2[] = new int[brChisla2];
+		mas2[mas2.length] = 1;
+		int spom = -1;
+		mas2 = vurniNaobratno(mas, spom, mas2);
+		System.out.println(mas2);
+		File fileche2 = new File("result.txt");
+		PrintWriter pishi = new PrintWriter(fileche2);
+		for(int i=0; i<brChisla2; i++) {
+			pishi.print(mas2[i]);
+			pishi.println();
+		}
+		pishi.close();
+		premini.close();
+	}
+	public static int[] vurniNaobratno(int mas[], int spom, int mas2[]) {
+		if(mas2[mas2.length] == 1) {
+			spom++;
+			if(spom<mas.length) {
+				vurniNaobratno(mas, spom, mas2);
+			}
+			if(mas[spom] % 2 == 0) {
+				mas2[mas2.length - spom] = mas[spom];
+			}
+		}
+		return mas2;
+	}
+
+}
